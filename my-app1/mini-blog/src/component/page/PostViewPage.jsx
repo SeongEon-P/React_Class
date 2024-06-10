@@ -11,14 +11,14 @@ const Wrapper =styled.div`
     width : calc(100% - 32px);
     display : flex;
     flex-direction: column;
-    align-itmes: center;
+    align-items: center;
     justify-content: center;
 `;
 
 const Container=styled.div`
     width: 100%;
     max-width : 720px;
-    : not (:last-child){
+    :not(:last-child){
      margin-bottom: 16px;
     }
 `;
@@ -47,31 +47,52 @@ const CommentLabel=styled.p`
 
 function PostViewPage(props){
     const navigate=useNavigate();
-    const {postId}=useParams ();
-    const post=data.find((item)=>{
-        return item.id==postId;
+    const {postId}=useParams();
+    const post=data.find((item) => {
+        return item.id == postId;
     });
-    const [comment, setComment]=useState("");
+    const [comment, setComment] = useState("");
+    const [comments, setComments] = useState(post.comments || []);
+
+    const handleAddComment = () => {
+        const newComment = {
+            id: comments.length + 1,
+            content: comment,
+        };
+        setComments([...comments, newComment]);
+        setComment(""); // 댓글 입력 필드 초기화
+    };
+
+    const handleDeletePost = () => {
+        const index = data.findIndex((item) => item.id == postId);
+        if (index !== -1) {
+            data.splice(index, 1); // 데이터에서 게시글 삭제
+            navigate("/"); // 메인 페이지로 이동
+        }
+    };
+
 
     return(
         <Wrapper>
             <Container>
-                <Button title="뒤로가기" onclick={()=>{navigate("/")}}/>
+                <Button title="뒤로가기" onClick={()=>{navigate("/")}}/>
                 <PostContainer>
                     <TitleText>{post.title}</TitleText>
                     <ContentText>{post.content}</ContentText>
                 </PostContainer>
                 <CommentLabel>댓글</CommentLabel>
-                <CommentList comments={post.comments} />
+                <CommentList comments={comments} />
 
                 <TextInput
 
-                heigh={40}
+                height={40}
                 value={comment}
                 onChange={(event)=>{
-                    setComment (event. target.value);
+                    setComment (event.target.value);
                 }}/>
-            <Button title="댓글 작성하기"onclick={()=>{navigate("/")}} />
+            <Button title="댓글 작성하기" onClick={handleAddComment} />
+            {/* <Button title="댓글 작성하기" onClick={()=>{navigate("/")}} /> */}
+            <Button title="게시글 삭제하기" onClick={handleDeletePost} />
         </Container>
     </Wrapper>
     )

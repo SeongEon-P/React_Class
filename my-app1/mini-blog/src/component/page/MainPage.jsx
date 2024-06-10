@@ -17,7 +17,8 @@ const Wrapper=styled.div`
 const Container=styled.div`
     width : 100%;
     max-width:720px;
-    : not(:last-child){
+    
+    :not(:last-child){
         margin-bottom:16px;
     }
 `;
@@ -28,7 +29,7 @@ function MainPage(props){
     return(
         <Wrapper>
             <Container >
-                <Button title="글 작성하기" onclick={() =>{
+                <Button title="글 작성하기" onClick={() =>{
                     navigate ("/post-write");
                 }} />
 

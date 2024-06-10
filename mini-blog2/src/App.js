@@ -5,7 +5,7 @@ import {BrowserRouter, Routes, Route} from "react-router-dom";
 import styled from "styled-components";
 import MainPage from "./component/page/MainPage";
 import PostWritePage from "./component/page/PostWritePage";
-import PostViewPage from "./component/page/PageViewPage";
+import PostViewPage from "./component/page/PostViewPage";
 
 const MainTitleText=styled.p`
   font-size : 24px;

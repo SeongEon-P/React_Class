@@ -11,7 +11,7 @@ const StyleButton=styled.button`
 
 function Button(props){
     const {title, onClick}=props;
-    return(
+    return (
         <StyleButton onClick={onClick}>
             {title || "button"}
         </StyleButton>)
