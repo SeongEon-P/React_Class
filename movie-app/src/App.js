@@ -9,6 +9,7 @@ import SearchBox from './components/SearchBox';
 function App() {
   const [searchValue, setSearchValue] = useState('');
   const [movies, setMovies] = useState([]);
+  const [favorites, setFavorites] = useState([]);
     // {
     //   Title: "The Amazing Spider-Man",
     //   Year: "2012",
@@ -49,15 +50,38 @@ function App() {
     }
   }, [searchValue]);
 
+  useEffect(() => {
+    const movieFavorites = JSON.parse(localStorage.getItem('favorites'));
+    if (movieFavorites) {
+      setFavorites(movieFavorites);
+    }
+  }, []);
+
+  const saveToLocalStorage = (items) => {
+    localStorage.setItem('favorites', JSON.stringify(items));
+  };
+
+  const addFavoriteMovie = (movie) => {
+    const newList = [...favorites, movie];
+    setFavorites(newList);
+    saveToLocalStorage(newList);
+  };
+
 
   return (
     <div className='container-fluid movie-app'>
        <div className='row align-items-center my-4'>
-        <MovieListHeading heading='Movies' />
+        <MovieListHeading heading='영화 검색과 선호작 등록' />
         <SearchBox searchValue={searchValue} setSearchValue={setSearchValue}/>
       </div>
-      <div className="row">
-      <MovieList movies={movies} />
+      <div className="row"></div>
+      <MovieList movies={movies}
+      handleClick={addFavoriteMovie}
+      addMovie={true}/>
+      <div className="row align-items-center my-4">
+      <MovieListHeading heading='내 선호작' />
+      <MovieList movies={favorites}
+      addMoive={false}/>
       </div>
     </div>
   );
