@@ -67,6 +67,15 @@ function App() {
     saveToLocalStorage(newList);
   };
 
+  const removeMovie = (movie) => {
+    const newList = favorites.filter(
+      (favourite) => favourite.imdbID !== movie.imdbID
+    );
+
+    setFavorites(newList);
+    saveToLocalStorage(newList);
+  };
+
 
   return (
     <div className='container-fluid movie-app'>
@@ -74,13 +83,15 @@ function App() {
         <MovieListHeading heading='영화 검색과 선호작 등록' />
         <SearchBox searchValue={searchValue} setSearchValue={setSearchValue}/>
       </div>
-      <div className="row"></div>
+      <div className="row">
       <MovieList movies={movies}
       handleClick={addFavoriteMovie}
       addMovie={true}/>
+      </div>
       <div className="row align-items-center my-4">
       <MovieListHeading heading='내 선호작' />
       <MovieList movies={favorites}
+      handleClick={removeMovie}  // 여기에서 handleClick을 removeMovie로 설정
       addMoive={false}/>
       </div>
     </div>
