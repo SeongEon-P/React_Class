@@ -1,6 +1,7 @@
 package com.mysite.springbackend.controller;
 
 import com.mysite.springbackend.entity.User;
+import com.mysite.springbackend.exception.UserNotFoundException;
 import com.mysite.springbackend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -23,4 +24,11 @@ public class UserController {
         return userRepository.findAll();
     }
 
+    @GetMapping("/user/{id}")
+    public User getUserById(@PathVariable Long id){
+        return userRepository.findById(id).orElseThrow(() ->new UserNotFoundException(id));
+    }
+
 }
+
+
