@@ -22,9 +22,6 @@ function EditUser() {
         loadUser();
     },[]);
 
-    // <input onChange={onInputChange} type="text" value={name}/>
-
-
     const onInputChange = (e) => {
         setUser({
             ...user,
@@ -33,10 +30,9 @@ function EditUser() {
     };
 
     
-
     const onSubmit = async (e) => {
         e.preventDefault();
-        await axios.post('http://localhost:8082/user',user);
+        await axios.put(`http://localhost:8082/user/${id}`,user);
         navigate('/');
     };
 
