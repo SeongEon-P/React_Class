@@ -1,8 +1,10 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios"; 
 
 function EditUser() {
+    const {id} = useParams();
+    let navigate=useNavigate()
     const [user, setUser] = useState({
         name: '',
         username: '',
@@ -11,6 +13,18 @@ function EditUser() {
 
     const { name, username, email } = user;
 
+
+    const loadUser = async () => { //유저 데이터 가져오기
+        const result = await axios.get(`http://localhost:8082/user/${id}`); //주소에 아이디가 들어가야해서 백틱 사용
+        setUser(result.data)
+    };
+    useEffect(()=>{
+        loadUser();
+    },[]);
+
+    // <input onChange={onInputChange} type="text" value={name}/>
+
+
     const onInputChange = (e) => {
         setUser({
             ...user,
@@ -18,7 +32,7 @@ function EditUser() {
         });
     };
 
-    let navigate=useNavigate()
+    
 
     const onSubmit = async (e) => {
         e.preventDefault();
