@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import AddUser from './users/AddUser';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import EditUser from './users/EditUser';
+import ViewUser from './users/ViewUser';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/adduser" element={<AddUser />} />
           <Route path="/edituser/:id" element={<EditUser />} />
+          <Route path="/viewuser" element={<ViewUser />} />
         </Routes>
       </BrowserRouter>
     </div>

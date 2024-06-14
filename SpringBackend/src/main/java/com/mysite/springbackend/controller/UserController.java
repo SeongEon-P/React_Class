@@ -46,7 +46,7 @@ public class UserController {
             throw new UserNotFoundException(id);
         }
         userRepository.deleteById(id);
-        return "유저 아이디 : " +id+"는 삭제 되었습니다";
+        return "유저 아이디 : " +id+"는 삭제 되었습니다"; 
     }
 
 }
