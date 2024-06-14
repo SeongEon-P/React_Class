@@ -32,9 +32,9 @@ public class BoardController {
     }
 
     // bno를 기반으로 특정 게시글의 조회수를 증가
-    @GetMapping("/board/{bno}/incrementHit")
-    public Board incrementHit(@PathVariable Long bno) {
-        return boardService.incrementHit(bno);
+    @PostMapping("/board/{bno}/incrementHit")
+    public void incrementHit(@PathVariable Long bno) {
+         boardService.incrementHit(bno);
     }
 
     // bno를 기반으로 특정 게시글을 수정

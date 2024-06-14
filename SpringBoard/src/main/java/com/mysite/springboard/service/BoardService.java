@@ -18,10 +18,12 @@ public class BoardService {
     }
 
     public List<Board> getAllBoards() {
+
         return boardRepository.findAll();
     }
 
     public Optional<Board> getBoardById(Long bno) {
+        incrementHit(bno);  // 조회수 증가 후 게시글 반환
         return boardRepository.findById(bno);
     }
 
