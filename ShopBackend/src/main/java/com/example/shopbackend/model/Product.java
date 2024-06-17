@@ -2,6 +2,7 @@ package com.example.shopbackend.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -22,6 +23,7 @@ public class Product {
     @Column(name = "price", nullable = false)
     private Integer price;
 
+    @CreationTimestamp
     @Column(name = "create_time", nullable = false)
     private LocalDateTime createTime;
 }

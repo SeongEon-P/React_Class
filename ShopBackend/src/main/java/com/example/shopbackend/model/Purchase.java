@@ -22,11 +22,10 @@ public class Purchase {
     private User user;
 
     @Column(name = "product_id", nullable = false)
-    private String productId;
+    private Long productId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id", referencedColumnName = "id", insertable = false, updatable = false)
-    //it is only for foreign key.
     private Product product;
 
     @Column(name = "price", nullable = false)
