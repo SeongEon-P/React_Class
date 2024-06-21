@@ -1,6 +1,5 @@
 package com.example.shopbackend.service;
 
-
 import com.example.shopbackend.model.Purchase;
 import com.example.shopbackend.repository.PurchaseRepository;
 import com.example.shopbackend.repository.projection.PurchaseItem;
@@ -23,6 +22,6 @@ public class PurchaseServiceImpl implements PurchaseService {
 
     @Override
     public List<PurchaseItem> findPurchaseItemsOfUser(Long userId) {
-        return purchaseRepository.findAllPurchasesOfUser(userId);
+        return purchaseRepository.findAllPurchaseOfUser(userId);
     }
 }

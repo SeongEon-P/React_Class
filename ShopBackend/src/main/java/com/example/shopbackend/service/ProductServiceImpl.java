@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class ProductServiceImpl implements ProductService{
+public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
 
     @Override
@@ -20,10 +20,12 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public void deleteProduct(Long id){
+    public void deleteProduct(Long id) {
         productRepository.deleteById(id);
     }
 
     @Override
-    public List<Product> findAllProducts() { return productRepository.findAll(); }
+    public List<Product> findAllProducts() {
+        return productRepository.findAll();
+    }
 }
