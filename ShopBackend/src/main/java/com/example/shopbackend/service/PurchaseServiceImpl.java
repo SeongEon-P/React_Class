@@ -1,7 +1,9 @@
 package com.example.shopbackend.service;
 
 import com.example.shopbackend.model.Purchase;
+import com.example.shopbackend.model.User;
 import com.example.shopbackend.repository.PurchaseRepository;
+import com.example.shopbackend.repository.UserRepository;
 import com.example.shopbackend.repository.projection.PurchaseItem;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,6 +14,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class PurchaseServiceImpl implements PurchaseService {
+    private final UserRepository userRepository;
     private final PurchaseRepository purchaseRepository;
 
     @Override
@@ -21,7 +24,8 @@ public class PurchaseServiceImpl implements PurchaseService {
     }
 
     @Override
-    public List<PurchaseItem> findPurchaseItemsOfUser(Long userId) {
-        return purchaseRepository.findAllPurchaseOfUser(userId);
+    public List<PurchaseItem> findPurchaseItemsOfUser(String username) {
+        User user = userRepository.findByUsername(username).orElseThrow();
+        return purchaseRepository.findAllPurchaseOfUser(user.getId());
     }
 }

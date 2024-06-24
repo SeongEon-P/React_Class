@@ -38,6 +38,7 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public void changeRole(Role newRole, String username) {
+
         userRepository.updateUserRole(username, newRole);
     }
 }
