@@ -1,10 +1,20 @@
+:root {
+  --body_background: #141414; /* 기본 배경색: 다크 모드 */
+  --body_color: white;
+}
+
+[data-theme='light'] {
+  --body_background: #ffffff; /* 라이트 모드 배경색 */
+  --body_color: black;
+}
+
 .App {
   text-align: center;
 }
 
 body {
-	background: #141414;
-	color: white;
+  background-color: var(--body_background); /* CSS 변수 써서, 색깔이 따라가도록 설정함 */
+  color: var(--body_color); 
 }
 
 .movie-app > .row {
@@ -76,4 +86,10 @@ body {
 	font-size: 20px;
 	padding: 20px;
 	text-align: center;
+}
+
+/* movie_list 배경색 설정 */
+.movie_list {
+  background-color: var(--body_background); /* CSS 변수 써서, 색깔이 따라가도록 설정함 */
+  color: var(--body_color); 
 }
