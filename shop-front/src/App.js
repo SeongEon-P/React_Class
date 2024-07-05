@@ -4,10 +4,12 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Home from './pages/home/Home';
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
-import Admin from './pages/admin/Adimin';
+import Admin from './pages/admin/Admin';
 import NotFound from './pages/not-found/NotFound';
 import UnAuthorized from './pages/unauthorized/UnAuthorized';
 import Profile from './pages/profile/Profile';
+import { Role } from './models/Role';
+import AuthGuard from './guards/AuthGuard';
 
 
 function App() {
@@ -26,6 +28,16 @@ function App() {
             <Route path='/404' element={<NotFound />}></Route>
             <Route path='/401' element={<UnAuthorized />}></Route>
             <Route path='*' element={<NotFound />}></Route>
+            <Route path='/profile' element={
+              <AuthGuard roles={[Role.ADMIN, Role.USER]}>
+                <Profile />
+              </AuthGuard>
+            } />
+            <Route path='/admin' element={
+              <AuthGuard roles={[Role.ADMIN]}>
+                <Admin />
+              </AuthGuard>
+            } />
           </Routes>
         </div>
     </BrowserRouter>
