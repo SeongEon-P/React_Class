@@ -3,35 +3,58 @@
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  width: 100%; /* 너비를 100%로 설정 */
 }
 
 .back-button {
   margin-bottom: 20px;
+  background-color: #E41E26; /* 버튼 배경색 설정 */
+  color: white; /* 버튼 글자색 설정 */
+  border: none; /* 버튼 테두리 없애기 */
+  padding: 10px 20px; /* 버튼 패딩 설정 */
+  border-radius: 5px; /* 버튼 모서리 둥글게 */
+  cursor: pointer; /* 마우스를 올렸을 때 커서 변경 */
+}
+
+.back-button:hover {
+  background-color: #7a0f14; /* 호버 시 배경색 설정 */
 }
 
 .movie-details-container {
   display: flex;
   align-items: flex-start;
-  max-width: 1000px; /* 전체 컨테이너의 최대 너비 설정 */
+  justify-content: center; /* 중앙 정렬 추가 */
+  width: 100%; 
 }
 
-.movie_poster {
-  width: 100%;
-  height: auto;
-  max-width: 400px; /* 포스터의 최대 너비 설정 */
-  margin-right: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.25);
+.trailer {
+  position: relative;
+  width: 70%; /* 트레일러 너비를 화면의 절반으로 설정 */
 }
+
+.trailer iframe {
+  width: 100%; /* iframe의 너비를 부모 요소에 맞춤 */
+  height: 630px; /* 트레일러 높이 설정 */
+}
+
+.movie-title {
+  font-weight: bold; /* 볼드체 */
+  font-size: 1.5em; /* 폰트 크기 증가 */
+}
+
 
 .movie-info {
-  text-align: left; /* 왼쪽 정렬 */
+  margin-left: 20px; /* 트레일러와 영화 정보 사이에 간격 추가 */
   color: #fff;
+  background: rgba(0, 0, 0, 0.5); /* 배경을 반투명하게 설정 */
+  padding: 20px;
+  border-radius: 10px;
+  text-align: left; /* 왼쪽 정렬 */
   max-width: 400px; /* 설명 컨테이너의 최대 너비 설정 */
 }
 
-.movie_info div,
-.movie_info p {
+.movie-info div,
+.movie-info p {
   margin-bottom: 10px;
 }
 
@@ -39,12 +62,4 @@
   width: 20px;
   height: 20px;
   margin-left: 5px;
-}
-
-.trailer {
-  margin-top: 20px;
-}
-
-.trailer h3 {
-  margin-bottom: 10px;
 }
