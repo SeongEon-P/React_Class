@@ -1,11 +1,13 @@
 :root {
   --body_background: #141414; /* 기본 배경색: 다크 모드 */
   --body_color: white;
+  --heading_color: #ffe400; /* 기본 제목 색상: 다크 모드 */
 }
 
 [data-theme='light'] {
   --body_background: #ffffff; /* 라이트 모드 배경색 */
   --body_color: black;
+  --heading_color: #000000; /* 라이트 모드 제목 색상 */
 }
 
 .App {

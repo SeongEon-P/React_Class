@@ -1,10 +1,9 @@
 import './MovieList.css';
-import Fire from '../../assets/fire.png';
 import MovieCard from './MovieCard';
 import { useEffect, useState } from 'react';
 import _ from 'lodash';
 
-const MovieList = ({ type, title, emoji }) => {
+const MovieList = ({ type, title, emoji, onMovieSelect }) => {
   // 처음 받은 movie 데이터들을 movies state로 관리하기
   const [movies, setMovies] = useState([]);
   // 평점에 따라 영화 걸러내기
@@ -16,21 +15,19 @@ const MovieList = ({ type, title, emoji }) => {
     order: 'asc',
   });
 
+ 
   useEffect(() => {
-    fetchMovies();
-  }, []);
-
   const fetchMovies = async () => {
     const response = await fetch(
-      // 'https://api.themoviedb.org/3/discover/movie?api_key=317b4d9e8a4070df2a4f68ba2e8f2238&language=ko&sort_by=popularity.desc&include_adult=false&include_video=false&page=1'
-      // 'https://api.themoviedb.org/3/discover/movie/${type}?api_key=317b4d9e8a4070df2a4f68ba2e8f2238&language=ko&sort_by=popularity.desc&include_adult=false&include_video=false&page=1'
-      // `https://api.themoviedb.org/3/movie/${type}?api_key=183928bab7fc630ed0449e4f66ec21bd&language=ko`
       `https://api.themoviedb.org/3/movie/${type}?api_key=317b4d9e8a4070df2a4f68ba2e8f2238&language=ko&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`
     );
     const data = await response.json();
     setMovies(data.results);
     setFilterMovies(data.results);
   };
+
+  fetchMovies();
+}, [type]); // type을 의존성 배열에 추가
 
   // 평점 필터 메서드 만들기 + 한번 더 클릭했을때 모든 영화 보여주기
   const handleFilter = (rate) => {
@@ -148,6 +145,7 @@ const MovieList = ({ type, title, emoji }) => {
             voteAverage={movie.vote_average}
             description={movie.overview}
             movie={movie}
+            onMovieSelect={onMovieSelect} // 영화 선택 시 호출할 함수 전달
           />
         ))}
       </div>

@@ -9,6 +9,12 @@
   color: var(--heading_color);
 }
 
+/* 다크모드에서 "인기작품"의 색상을 #C4E1F6로 설정 */
+[data-theme='dark'] .movie_list_heading {
+  color: #C4E1F6;
+}
+
+
 .movie_filter {
   list-style: none;
   font-size: 16px;

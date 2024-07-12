@@ -12,6 +12,12 @@
   color: var(--heading_color);
 }
 
+/* 다크모드에서 MovieApp 글자의 색상을 #68A2D7로 설정 */
+[data-theme='dark'] .navbar > h1 {
+  color: #68A2D7;
+}
+
+
 .navbar_links {
   display: flex;
   align-items: center;
