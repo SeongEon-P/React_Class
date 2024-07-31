@@ -11,7 +11,9 @@ import './Navbar.css';
 export default function Navbar() {
   return (
     <nav className="navbar">
-      <h1>MovieApp</h1>
+      <a href="/" className="navbar_brand">
+        <h1>MovieApp</h1>
+      </a>
 
       <div className="navbar_links">
         <DarkMode />
@@ -27,7 +29,7 @@ export default function Navbar() {
           최신순
           <img className="navbar_emoji" src={Party} alt="party emoji" />
         </a>
-        <a href="#login">
+        <a href="/login">
           로그인
           <img className="navbar_emoji" src={Login} alt="party emoji" />
         </a>

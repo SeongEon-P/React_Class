@@ -1,45 +1,62 @@
 .login-container {
-    max-width: 400px;
+    max-width: 800px; /* 가로 길이 늘림 */
     margin: 0 auto;
     padding: 20px;
     text-align: center;
-    background-color: #f8f8f8;
+    background-color: var(--login-background-color);
+    color: var(--login-text-color); /* 글자색 설정 */
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .login-container h2 {
+    position: absolute; /* 화면 중앙 정렬을 위한 추가 */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+.login-container h2 {
     margin-bottom: 20px;
-  }
-  
-  .form-group {
+}
+
+.form-group {
     margin-bottom: 15px;
-  }
-  
-  .form-group label {
+}
+
+.form-group label {
     display: block;
     margin-bottom: 5px;
-  }
-  
-  .form-group input {
+    color: var(--login-text-color); /* 글자색 설정 */
+}
+
+.form-group input {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-  }
-  
-  button {
+}
+
+button {
     width: 100%;
     padding: 10px;
     border: none;
-    background-color: #007bff;
-    color: white;
+    background-color: #E41E26; /* 버튼 배경색 설정 */
+    color: white; /* 버튼 글자색 설정 */
     border-radius: 5px;
-    cursor: pointer;
+    cursor: pointer; /* 마우스를 올렸을 때 커서 변경 */
     font-size: 16px;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
+}
+
+button:hover {
+    background-color: #7a0f14; /* 호버 시 배경색 설정 */
+}
+
+/* 다크모드와 라이트모드 배경색 설정 */
+:root {
+    --login-background-color: #bbbbbb; /* 라이트모드 배경색 */
+    --login-text-color: #000000; /* 라이트모드 글자색 */
+}
+
+[data-theme='dark'] {
+    --login-background-color: #292929; /* 다크모드 배경색 */
+    --login-text-color: #ffffff; /* 다크모드 글자색 */
+}

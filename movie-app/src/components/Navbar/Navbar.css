@@ -7,6 +7,12 @@
   background-color: var(--body_background); /* 배경색을 테마에 맞게 변경 */
 }
 
+.navbar_brand {
+  text-decoration: none; /* 밑줄 없애기 */
+  color: #68A2D7; /* 글자 색상 설정 */
+}
+
+
 .navbar > h1 {
   font-size: 30px;
   color: var(--heading_color);

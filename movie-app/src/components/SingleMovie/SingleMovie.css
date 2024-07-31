@@ -27,9 +27,9 @@
   width: 100%; 
 }
 
-.trailer {
+.trailer, .poster {
   position: relative;
-  width: 70%; /* 트레일러 너비를 화면의 절반으로 설정 */
+  width: 70%; /* 트레일러와 포스터 너비를 화면의 절반으로 설정 */
 }
 
 .trailer iframe {
@@ -37,11 +37,16 @@
   height: 630px; /* 트레일러 높이 설정 */
 }
 
+.movie_poster {
+  width: 100%; /* 포스터의 너비를 부모 요소에 맞춤 */
+  height: 630px; /* 포스터 높이 설정 */
+  object-fit: cover; /* 포스터의 비율을 유지하면서 크기를 맞춤 */
+}
+
 .movie-title {
   font-weight: bold; /* 볼드체 */
   font-size: 1.5em; /* 폰트 크기 증가 */
 }
-
 
 .movie-info {
   margin-left: 20px; /* 트레일러와 영화 정보 사이에 간격 추가 */

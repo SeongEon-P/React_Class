@@ -117,9 +117,9 @@ const MovieList = ({ type, title, emoji, onMovieSelect }) => {
             onChange={handelSort}
             className="movie_sorting"
           >
-            <option value="default">SortBy</option>
-            <option value="release_date">Date</option>
-            <option value="vote_average">Rating</option>
+            <option value="default">분류</option>
+            <option value="release_date">개봉일</option>
+            <option value="vote_average">평점</option>
           </select>
           <select
             name="order"
@@ -127,8 +127,8 @@ const MovieList = ({ type, title, emoji, onMovieSelect }) => {
             onChange={handelSort}
             className="movie_sorting"
           >
-            <option value="asc">Ascending</option>
-            <option value="desc">Descending</option>
+            <option value="asc">오래된순</option>
+            <option value="desc">최신순</option>
           </select>
         </div>
       </header>

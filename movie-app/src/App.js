@@ -15,39 +15,39 @@ import Signup from "./components/Signup/Signup"; // Signup 컴포넌트 임포�
 
 
 function App() {
-    // 상태 관리: 현재 표시할 컴포넌트 (영화 목록 또는 상세 정보) 및 선택된 영화 ID
-    const [currentView, setCurrentView] = useState('movieList');
-    const [selectedMovieId, setSelectedMovieId] = useState(null);
-  
-    // 영화 상세 정보 보기로 전환하는 함수
-    const handleMovieSelect = (movieId) => {
-      setSelectedMovieId(movieId);
-      setCurrentView('detailMovie');
-    };
-  
-    // 영화 목록 보기로 전환하는 함수
-    const handleBackToList = () => {
-      setCurrentView('movieList');
-      setSelectedMovieId(null);
-    };
+  // 상태 관리: 현재 표시할 컴포넌트 (영화 목록 또는 상세 정보) 및 선택된 영화 ID
+  const [currentView, setCurrentView] = useState('movieList');
+  const [selectedMovieId, setSelectedMovieId] = useState(null);
+
+  // 영화 상세 정보 보기로 전환하는 함수
+  const handleMovieSelect = (movieId) => {
+    setSelectedMovieId(movieId);
+    setCurrentView('detailMovie');
+  };
+
+  // 영화 목록 보기로 전환하는 함수
+  const handleBackToList = () => {
+    setCurrentView('movieList');
+    setSelectedMovieId(null);
+  };
   return (
     <Router>
-    <div className="App">
-      <Navbar />
-      <Routes>
-      <Route path="/" element={
-                                <>
-                            <MovieList type='popular' title='인기작품' emoji={Fire}  onMovieSelect={handleMovieSelect} />
-                            <MovieList type='top_rated' title='최고평점' emoji={Star} onMovieSelect={handleMovieSelect} />
-                            <MovieList type='upcoming' title='최신순' emoji={Party} onMovieSelect={handleMovieSelect} />
-                        </>
-                  } 
+      <div className="App">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={
+            <>
+              <MovieList type='popular' title='인기작품' emoji={Fire} onMovieSelect={handleMovieSelect} />
+              <MovieList type='top_rated' title='최고평점' emoji={Star} onMovieSelect={handleMovieSelect} />
+              <MovieList type='upcoming' title='최신순' emoji={Party} onMovieSelect={handleMovieSelect} />
+            </>
+          }
           />
-            <Route path="/login" component={Login} />
-          <Route path="/signup" component={Signup} />
+          <Route path="/login" element={<Login />} /> 
+          <Route path="/signup" element={<Signup />} /> 
           <Route path="/singleMovie/:movieId" element={<SingleMovie onBack={handleBackToList} />} />
-          </Routes>
-    </div>
+        </Routes>
+      </div>
     </Router>
   );
 }
